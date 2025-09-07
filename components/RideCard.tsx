@@ -27,18 +27,18 @@ const RideCard = ({ ride: {
         <View className='flex flex-col mx-5 gap-y-5 flex-1'>
           <View className='flex flex-row items-center gap-x-2'>
             <Image source={icons.to} className='w-5 h-5' />
-            <Text className='text-md' numberOfLines={1}>{origin_address}</Text>
+            <Text className='text-md font-JakartaSemiBold' numberOfLines={1}>{origin_address}</Text>
           </View>
           <View className='flex flex-row items-center gap-x-2'>
             <Image source={icons.point} className='w-5 h-5' />
-            <Text className='text-md' numberOfLines={1}>{destination_address}</Text>
+            <Text className='text-md font-JakartaSemiBold' numberOfLines={1}>{destination_address}</Text>
           </View>
         </View>
       </View>
 
       <View className='flex flex-col w-full mt-5 bg-general-500 rounded-lg p-3 items-start justify-center'>
         <View className='flex flex-row items-center w-full justify-between mb-5'>
-          <Text className='text-md font-JakartaMedium text-gray-500'>
+          <Text className='text-md font-JakartaBold text-gray-500'>
             Date & Time
           </Text>
           <Text className='text-md font-JakartaMedium text-gray-500'>
@@ -47,7 +47,7 @@ const RideCard = ({ ride: {
         </View>
 
         <View className='flex flex-row items-center w-full justify-between mb-5'>
-          <Text className='text-md font-JakartaMedium text-gray-500'>
+          <Text className='text-md font-JakartaBold text-gray-500'>
             Driver
           </Text>
           <Text className='text-md font-JakartaMedium text-gray-500'>
@@ -56,7 +56,7 @@ const RideCard = ({ ride: {
         </View>
 
         <View className='flex flex-row items-center w-full justify-between mb-5'>
-          <Text className='text-md font-JakartaMedium text-gray-500'>
+          <Text className='text-md font-JakartaBold text-gray-500'>
             Car Seats
           </Text>
           <Text className='text-md font-JakartaMedium text-gray-500'>
@@ -65,7 +65,7 @@ const RideCard = ({ ride: {
         </View>
 
         <View className='flex flex-row items-center w-full justify-between mb-5'>
-          <Text className='text-md font-JakartaMedium text-gray-500'>
+          <Text className='text-md font-JakartaBold text-gray-500'>
             Payment Status
           </Text>
           <Text className={`text-md capitalize font-JakartaMedium text-gray-500 ${payment_status === "paid" ? 'text-green-500' : 'text-red-500'}`}>
