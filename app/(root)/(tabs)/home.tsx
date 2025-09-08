@@ -7,7 +7,7 @@ import { useLocationStore } from '@/store';
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from 'expo-router'
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const recentRides =
@@ -115,7 +115,7 @@ export default function Page() {
   const { user } = useUser();
   // console.log(user);
   const loading = true;
-  const [hasPermissions, setHasPermissions] = useState(false);
+  const [hasPermissions, setHasPermissions] = useState<boolean>(false);
 
 
   const handleSignOut = () => {
@@ -126,28 +126,27 @@ export default function Page() {
   }
 
   useEffect(() => {
-    const requestLocation = async () => {
+    (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-
-      if (status !== 'granted') {
-        setHasPermissions(false)
+      if (status !== "granted") {
+        setHasPermission(false);
         return;
       }
-      let location = await Location.getCurrentPositionAsync();
+
+      let location = await Location.getCurrentPositionAsync({});
+
       const address = await Location.reverseGeocodeAsync({
         latitude: location.coords?.latitude!,
         longitude: location.coords?.longitude!,
       });
 
       setUserLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
+        latitude: location.coords?.latitude,
+        longitude: location.coords?.longitude,
         address: `${address[0].name}, ${address[0].region}`,
       });
-    };
-    requestLocation();
-
-  }, [])
+    })();
+  }, []);
   return (
     <SafeAreaView className='bg-general-500'>
       <FlatList
